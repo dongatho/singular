@@ -1,0 +1,2 @@
+# singular
+ Angular demonstration project
