@@ -1,0 +1,84 @@
+
+<!-- saved from url=(0315)https://d3c33hcgiwev3.cloudfront.net/_27df4bcf1283b490a6bbb31cc743911e_home.html?Expires=1451520000&Signature=C5GyqjSMqcsaWAKqeb-QWqwl-LPOFE7K-Sc-EnCgWTqyLh-tMIhtQdlmZC4IIfqM4cETbWWdpPYlk8AtpcXVzrTu5a7Xk5nwvKHe0bJ9XZHd-O9OQnh8SW6ttx6hQnR-w1BJzsKahIrT7Reg3y9KJY7qUrAqh414Lzj0Q3FcmUU_&Key-Pair-Id=APKAJLTNE6QMUY6HBC5A -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"><link rel="stylesheet" type="text/css" href="chrome-extension://lfjamigppmepikjlacjdpgjaiojdjhoj/css/menu.css"></head><body><div class="container" ng-controller="IndexController">
+        <div class="row row-content" ng-controller="IndexController">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9">
+                <p style="padding:20px;"></p>
+                <h3 align="center">Our Lipsmacking Culinary Creations</h3>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{featuredDish.image}} ng-alt={{featuredDish.name}}>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{featuredDish.name}} <span class="label label-danger">Hot</span> <span class="badge">${{featuredDish.price}}</span>
+                        </h2>
+                        <p>{{featuredDish.description}}</p>
+                        <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                    </div>
+                </div>                
+                
+            </div>
+        </div>
+
+
+        <div class="row row-content" ng-controller="IndexController">
+            <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+                <h3 align="center">This Month's Promotions</h3>
+            </div>
+            <div class="col-xs-12 col-sm-9">
+
+               <div class="media">
+                    
+                    <div class="media-body">
+                        <h2 class="media-heading">{{promotion.name}} <span class="label label-danger">New</span>
+                        </h2>
+                            <p>{{promotion.description}} </p>
+                            <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                    </div>                    
+                    
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{promotion.image}} ng-alt={{promotion.name}}>
+                        </a>
+                    </div>
+
+                </div>                
+                
+            </div>
+        </div>
+
+        <div class="row row-content" ng-controller="AboutController">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9">
+                <p style="padding:20px;"></p>
+                <h3 align="center">Meet our Culinary Specialists</h3>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{leader.image}} ng-alt={{leader.name}}>
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{leader.name}}</h2>
+                        <h4>{{leader.designation}}</h4>
+                        <p>{{leader.description}}
+                         </p>
+                        <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
+                    </div>
+                </div>                
+                
+            </div>
+        </div>
+    </div>
+</body></html>
