@@ -60,11 +60,11 @@
                   <li class="media">
                     <div class="media-left">
                       <a href="#">
-                        <img class="media-object" data-ng-src={{leader.image}} alt="...">
+                        <img class="media-object" data-ng-src={{leader.image}} ng-alt={{leader.name}}>
                       </a>
                     </div>
                     <div class="media-body">
-                      <h4 class="media-heading">{{leader.designation}}</h4>
+                      <h3 class="media-heading">{{leader.name}} <small>{{leader.designation}}</small></h3>
                         {{leader.description}}
                     </div>
                   </li>
