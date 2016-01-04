@@ -6,17 +6,10 @@ angular.module('confusionApp')
             
             $scope.tab = 1;
             $scope.filtText = '';
-            $scope.showDetails = false;
-
-            //$scope.dishes= menuFactory.getDishes();
-            $scope.dishes= {};
             
-            menuFactory.getDishes()
-                .then(
-                    function(response) {
-                        $scope.dishes = response.data;
-                    }
-                );
+            $scope.showMenu = true;
+            $scope.message = "Loading ...";
+            $scope.dishes = menuFactory.getDishes().query();
             
                         
             $scope.select = function(setTab) {
@@ -80,15 +73,10 @@ angular.module('confusionApp')
 
             var dish= menuFactory.getDish(parseInt($stateParams.id,10));
             
-            //$scope.dish = dish;
             $scope.dish = {};
-            menuFactory.getDish(parseInt($stateParams.id,10))
-                .then(
-                    function(response){
-                        $scope.dish = response.data;
-                        $scope.showDish=true;
-                    }
-                );            
+            $scope.showDish = true;
+            $scope.message="Loading ...";
+            $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)});        
             
         }])
 
@@ -115,18 +103,10 @@ angular.module('confusionApp')
             var promotion= menuFactory.getPromotion(0);            
             $scope.promotion = promotion;
             
-            //var featuredDish = menuFactory.getDish(0);
-            //$scope.featuredDish = featuredDish;
-            
             $scope.featuredDish = {};
-
-            menuFactory.getDish(0)
-                .then(
-                    function(response){
-                        $scope.featuredDish = response.data;
-                        $scope.showDish = true;
-                    }
-                );            
+            $scope.showDish = true;
+            $scope.message="Loading ...";
+            $scope.featuredDish = menuFactory.getDishes().get({id:0});        
             
         }])
 
