@@ -53,9 +53,15 @@
 
 
         <div class="row row-content" ng-controller="AboutController">
-            <div class="col-xs-12 col-sm-9">
-                <h2>Corporate Leadership</h2>
-               <ul class="media-list" data-ng-repeat="leader in leadership">
+            <div class="col-xs-12 col-sm-9">              
+                
+               <h2>Corporate Leadership</h2>
+                
+                <div ng-if="!showLeadership">
+                    <h3>{{leadershipMessage}}</h3>
+                </div>                
+                
+               <ul class="media-list" data-ng-repeat="leader in leadership" ng-if="showLeadership">
                    
                   <li class="media">
                     <div class="media-left">

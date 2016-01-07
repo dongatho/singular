@@ -56,7 +56,7 @@ angular.module('confusionApp')
                         
         }])
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+        .controller('FeedbackController', ['$scope', '$stateParams', 'feedbackFactory', function($scope, $stateParams, feedbackFactory) {
             
             $scope.sendFeedback = function() {
                 
@@ -67,6 +67,9 @@ angular.module('confusionApp')
                     console.log('incorrect');
                 }
                 else {
+                    
+                    feedbackFactory.getSave().save($scope.feedback);
+                    
                     $scope.invalidChannelSelection = false;
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
                     $scope.feedback.mychannel="";
@@ -115,8 +118,21 @@ angular.module('confusionApp')
         // implement the IndexController and About Controller here
         .controller('IndexController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-            var promotion= menuFactory.getPromotion(0);            
-            $scope.promotion = promotion;
+            //alert(menuFactory.getPromotion().get());
+            
+            $scope.promotion = {};   
+            $scope.showPromotion = false;
+            $scope.messagePromotion="Loading Promotion...";
+            $scope.promotion = menuFactory.getPromotion().get({id:0})
+                .$promise.then(
+                    function(response){
+                        $scope.promotion = response;
+                        $scope.showPromotion = true;
+                    },
+                    function(response) {
+                        $scope.messagePromotion = "Error: "+response.status + " " + response.statusText;
+                    }
+                ); 
             
             $scope.featuredDish = {};
             $scope.showDish = false;
@@ -138,10 +154,31 @@ angular.module('confusionApp')
         
         .controller('AboutController', ['$scope', '$stateParams', 'corporateFactory', function($scope, $stateParams, corporateFactory) {
 
-            $scope.leadership = corporateFactory.getLeaders();
+            $scope.showLeadership = false;
+            $scope.leadershipMessage = "Loading Leadership...";
+            corporateFactory.getLeaders().query(
+                function(response) {
+                    $scope.leadership = response;
+                    $scope.showLeadership = true;
+                },
+                function(response) {
+                    $scope.leadershipMessage = "Error: "+response.status + " " + response.statusText;
+            });    
             
-            var leader = corporateFactory.getLeader(3);            
-            $scope.leader = leader;
+            
+            $scope.leader = {};
+            $scope.showLeader = false;
+            $scope.leaderMessage="Loading Leader...";
+            $scope.leader = corporateFactory.getLeaders().get({id:3})
+                .$promise.then(
+                    function(response){
+                        $scope.leader = response;
+                        $scope.showLeader = true;
+                    },
+                    function(response) {
+                        $scope.leaderMessage = "Error: "+response.status + " " + response.statusText;
+                    }
+                );            
             
         }])
 
